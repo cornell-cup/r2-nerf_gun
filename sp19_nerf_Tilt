@@ -11,7 +11,7 @@ float angles[3];
 
 Servo m1;
 int speedDeg = 20;
-int delayTime = 2000; // in microseconds (max 16000)
+int delayTime = 50000; // in microseconds (max 16000)
 int stayTime = 50000; //in microseconds
 
 int relayPin = 3;
@@ -92,15 +92,15 @@ void print_pos ( uint8_t position_array[] ) {
 
 void moveCwise(){
   for(int i=180; i>=90; i -=1){ //clockwise
-     m1.write(120);
-     delayMicroseconds(1000);
+     m1.write(110);
+     //delayMicroseconds(1000);
    }
 }
 
 void moveCCwise(){
   for(int i=0; i<90; i +=1){ //counterclockwise
-     m1.write(60); 
-     delayMicroseconds(1000); 
+     m1.write(70); 
+     //delayMicroseconds(1000); 
   }
 }
 
@@ -114,10 +114,10 @@ void stayStill(){
 
 void move(float pos){
   // for tilt
-   if (deg > pos+4){
+   if (deg > pos+2){
      moveCwise();
    }
-   else if (deg < pos-4){
+   else if (deg < pos-2){
     moveCCwise();
    }
    else {
